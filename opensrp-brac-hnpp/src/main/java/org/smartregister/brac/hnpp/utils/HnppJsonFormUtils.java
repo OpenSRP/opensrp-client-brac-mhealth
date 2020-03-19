@@ -592,6 +592,27 @@ public class HnppJsonFormUtils extends CoreJsonFormUtils {
 
                 String entity_id = baseClient.getBaseEntityId();
                 updateFormSubmissionID(encounterType,entity_id,baseEvent);
+
+                Obs obs = new Obs();
+
+                List<Address> a = baseClient.getAddresses();
+                JSONObject address = new JSONObject();
+                if(a.size()>0){
+                    Address aa = a.get(0);
+                    Map<String,String> addressFields = aa.getAddressFields();
+                    address.put("country",aa.getCountry());
+                    address.put("address1",addressFields.get("address1"));
+                    address.put("address2",addressFields.get("address2"));
+                    address.put("cityVillage",aa.getCityVillage());
+                    address.put("stateProvince",aa.getStateProvince());
+                    address.put("countyDistrict",aa.getCountyDistrict());
+                }
+                obs.setFieldType("concept");
+                obs.setFieldDataType("text");
+                obs.setFieldCode("addresses");
+                obs.setValue(address);
+                obs.setFormSubmissionField("addresses");
+                baseEvent.addObs(obs);
                 return new FamilyEventClient(baseClient, baseEvent);
             }
         } catch (Exception var10) {
