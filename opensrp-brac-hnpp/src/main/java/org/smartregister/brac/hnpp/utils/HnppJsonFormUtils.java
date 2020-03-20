@@ -90,6 +90,12 @@ public class HnppJsonFormUtils extends CoreJsonFormUtils {
         if(encounterType.equalsIgnoreCase(org.smartregister.chw.anc.util.Constants.EVENT_TYPE.ANC_HOME_VISIT)){
             prepareEvent(baseEvent);
         }
+        Context context = HnppApplication.getInstance().getContext().applicationContext();
+        SQLiteDatabase db = HnppApplication.getInstance().getRepository().getReadableDatabase();
+        HnppChwRepository pathRepository = new HnppChwRepository(context, HnppApplication.getInstance().getContext());
+        EventClientRepository eventClientRepository = new EventClientRepository(pathRepository);
+        org.smartregister.domain.db.Client baseClient = eventClientRepository.fetchClientByBaseEntityId(memberID);
+        prepareEventAddress(baseClient,baseEvent);
 //        if (StringUtils.isBlank(parentEventType))
 //            prepareEvent(baseEvent);
 
@@ -157,6 +163,34 @@ public class HnppJsonFormUtils extends CoreJsonFormUtils {
             baseEvent.addObs(new Obs("concept", "text", "anc_visit_date", "",
                     list, new ArrayList<>(), null, "anc_visit_date"));
         }
+    }
+    public static void prepareEventAddress(org.smartregister.domain.db.Client baseClient, Event baseEvent){
+        Obs obs = new Obs();
+
+        List<org.smartregister.domain.db.Address> a = baseClient.getAddresses();
+        JSONObject address = new JSONObject();
+        if(a.size()>0){
+
+            try {
+                org.smartregister.domain.db.Address aa = a.get(0);
+                Map<String,String> addressFields = aa.getAddressFields();
+                address.put("country",aa.getCountry());
+                address.put("address1",addressFields.get("address1"));
+                address.put("address2",addressFields.get("address2"));
+                address.put("cityVillage",aa.getCityVillage());
+                address.put("stateProvince",aa.getStateProvince());
+                address.put("countyDistrict",aa.getCountyDistrict());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+        obs.setFieldType("concept");
+        obs.setFieldDataType("text");
+        obs.setFieldCode("addresses");
+        obs.setValue(address);
+        obs.setFormSubmissionField("addresses");
+        baseEvent.addObs(obs);
     }
     public static void addEDDField(String formName,JSONObject jsonForm,String baseEntityId){
         if(formName.equalsIgnoreCase(HnppConstants.JSON_FORMS.ANC1_FORM)||formName.equalsIgnoreCase(HnppConstants.JSON_FORMS.ANC2_FORM)||formName.equalsIgnoreCase(HnppConstants.JSON_FORMS.ANC3_FORM)){
@@ -593,26 +627,7 @@ public class HnppJsonFormUtils extends CoreJsonFormUtils {
                 String entity_id = baseClient.getBaseEntityId();
                 updateFormSubmissionID(encounterType,entity_id,baseEvent);
 
-                Obs obs = new Obs();
 
-                List<Address> a = baseClient.getAddresses();
-                JSONObject address = new JSONObject();
-                if(a.size()>0){
-                    Address aa = a.get(0);
-                    Map<String,String> addressFields = aa.getAddressFields();
-                    address.put("country",aa.getCountry());
-                    address.put("address1",addressFields.get("address1"));
-                    address.put("address2",addressFields.get("address2"));
-                    address.put("cityVillage",aa.getCityVillage());
-                    address.put("stateProvince",aa.getStateProvince());
-                    address.put("countyDistrict",aa.getCountyDistrict());
-                }
-                obs.setFieldType("concept");
-                obs.setFieldDataType("text");
-                obs.setFieldCode("addresses");
-                obs.setValue(address);
-                obs.setFormSubmissionField("addresses");
-                baseEvent.addObs(obs);
                 return new FamilyEventClient(baseClient, baseEvent);
             }
         } catch (Exception var10) {
