@@ -48,6 +48,7 @@ import org.smartregister.domain.Response;
 import org.smartregister.exception.NoHttpResponseException;
 import org.smartregister.family.util.Constants;
 import org.smartregister.service.HTTPAgent;
+import org.smartregister.service.UserService;
 import org.smartregister.task.SaveTeamLocationsTask;
 import org.smartregister.util.Utils;
 import org.smartregister.view.activity.BaseLoginActivity;
@@ -74,8 +75,8 @@ public class LoginActivity extends BaseLoginActivity implements BaseLoginContrac
         userNameView = findViewById(R.id.login_user_name_view);
         passwordView = findViewById(R.id.login_password_view);
         if(BuildConfig.DEBUG){
-            userNameText.setText("testsk");
-            passwordText.setText("brac2019");
+            userNameText.setText("01645223004");
+            passwordText.setText("123456");
         }
 
         userNameText.addTextChangedListener(new TextWatcher() {

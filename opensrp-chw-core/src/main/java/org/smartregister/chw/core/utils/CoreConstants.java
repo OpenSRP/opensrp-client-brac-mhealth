@@ -440,6 +440,9 @@ public class CoreConstants {
         public static final String ANC_CLIENTS = "ANC Clients";
         public static final String CHILD_CLIENTS = "Child Clients";
         public static final String CHILD = "Child";
+        public static final String CHILD_0_6 = "Child 0-6";
+        public static final String CHILD_7_24 = "Child 7-26";
+        public static final String CHILD_25_60 = "Child 25-60";
         public static final String HIV_CLIENTS = "Hiv Clients";
         public static final String ANC = "ANC";
         public static final String ANC_RISK = "ANC Risk";
@@ -633,6 +636,9 @@ public class CoreConstants {
         public static final String PNC_RISK_REGISTER_ACTIVITY = "PNC_RISK_MEMBER_REGISTER_ACTIVITY";
         public static final String ELCO_RISK_REGISTER_ACTIVITY = "ELCO_RISK_MEMBER_REGISTER_ACTIVITY";
         public static final String CHILD_RISK_REGISTER_ACTIVITY = "CHILD_RISK_MEMBER_REGISTER_ACTIVITY";
+        public static final String CHILD_0_6_REGISTER_ACTIVITY = "CHILD_0_6_REGISTER_ACTIVITY";
+        public static final String CHILD_7_24_REGISTER_ACTIVITY = "CHILD_7_24_REGISTER_ACTIVITY";
+        public static final String CHILD_25_60_REGISTER_ACTIVITY = "CHILD_25_60_REGISTER_ACTIVITY";
         public static final String PNC_REGISTER_ACTIVITY = "PNC_REGISTER_ACTIVITY";
         public static final String REFERRALS_REGISTER_ACTIVITY = "REFERRALS_REGISTER_ACTIVITY";
         public static final String MALARIA_REGISTER_ACTIVITY = "MALARIA_REGISTER_ACTIVITY";

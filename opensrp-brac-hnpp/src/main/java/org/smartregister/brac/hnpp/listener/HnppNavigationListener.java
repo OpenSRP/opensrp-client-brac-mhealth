@@ -50,5 +50,14 @@ public class HnppNavigationListener extends NavigationListener {
             else if (CoreConstants.DrawerMenu.CHILD_RISK.equals(type)) {
                 startRegisterActivity(getActivity(CoreConstants.REGISTERED_ACTIVITIES.CHILD_RISK_REGISTER_ACTIVITY));
             }
+            else if (CoreConstants.DrawerMenu.CHILD_0_6.equals(type)) {
+                startRegisterActivity(getActivity(CoreConstants.REGISTERED_ACTIVITIES.CHILD_0_6_REGISTER_ACTIVITY));
+            }
+            else if (CoreConstants.DrawerMenu.CHILD_7_24.equals(type)) {
+                startRegisterActivity(getActivity(CoreConstants.REGISTERED_ACTIVITIES.CHILD_7_24_REGISTER_ACTIVITY));
+            }
+            else if (CoreConstants.DrawerMenu.CHILD_25_60.equals(type)) {
+                startRegisterActivity(getActivity(CoreConstants.REGISTERED_ACTIVITIES.CHILD_25_60_REGISTER_ACTIVITY));
+            }
     }
 }

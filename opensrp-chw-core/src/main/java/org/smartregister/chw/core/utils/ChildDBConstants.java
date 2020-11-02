@@ -58,6 +58,11 @@ public class ChildDBConstants {
     private static String childAgeLimitFilter(String dateColumn, int age) {
         return " ((( julianday('now') - julianday(" + dateColumn + "))/365) <" + age + ")";
     }
+    public static String childAgeLimitMonthFilter(String dateColumn, int startMonth, int endMonth) {
+        String query = " ((( julianday('now') - julianday(" + dateColumn + "))/12) >=" + startMonth + ")";
+        String query2 = " ((( julianday('now') - julianday(" + dateColumn + "))/12) <=" + endMonth + ")";
+        return query+" AND "+query2;
+    }
 
     public static String childAgeLimitFilter(String tableName) {
         return childAgeLimitFilter(tableColConcat(tableName, DBConstants.KEY.DOB), FIVE_YEAR);

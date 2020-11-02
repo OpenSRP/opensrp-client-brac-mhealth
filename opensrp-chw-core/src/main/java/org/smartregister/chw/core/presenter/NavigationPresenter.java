@@ -82,18 +82,22 @@ public class NavigationPresenter implements NavigationContract.Presenter {
             final int finalX = x;
             NavigationOption option = mModel.getNavigationItems().get(x);
             if(option.isNeedToExpand()){
-                mInteractor.getRegisterCount(tableMap.get(option.getNavigationSubModel().getType()), new NavigationContract.InteractorCallback<Integer>() {
-                    @Override
-                    public void onResult(Integer result) {
-                        mModel.getNavigationItems().get(finalX).getNavigationSubModel().setSubCount(result);
-                        getNavigationView().refreshCount();
-                    }
+                for(int i = 0; i < option.getNavigationSubModel().size() ; i++ ){
+                    int finalI1 = i;
+                    mInteractor.getRegisterCount(tableMap.get(option.getNavigationSubModel().get(i).getType()), new NavigationContract.InteractorCallback<Integer>() {
+                        @Override
+                        public void onResult(Integer result) {
+                            mModel.getNavigationItems().get(finalX).getNavigationSubModel().get(finalI1).setSubCount(result);
+                            getNavigationView().refreshCount();
+                        }
 
-                    @Override
-                    public void onError(Exception e) {
+                        @Override
+                        public void onError(Exception e) {
 
-                    }
-                });
+                        }
+                    });
+                }
+
             }
             mInteractor.getRegisterCount(tableMap.get(option.getMenuTitle()), new NavigationContract.InteractorCallback<Integer>() {
                 @Override

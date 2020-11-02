@@ -22,6 +22,7 @@ import org.smartregister.brac.hnpp.activity.ForceSyncActivity;
 import org.smartregister.brac.hnpp.job.PullHouseholdIdsServiceJob;
 import org.smartregister.brac.hnpp.job.VisitLogServiceJob;
 import org.smartregister.brac.hnpp.location.SSLocationHelper;
+import org.smartregister.brac.hnpp.utils.HnppConstants;
 import org.smartregister.brac.hnpp.utils.HnppJsonFormUtils;
 import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.core.contract.CoreApplication;
@@ -44,6 +45,11 @@ public class HnppNavigationPresenter extends NavigationPresenter {
     protected void initialize() {
         super.initialize();
         tableMap.put(CoreConstants.DrawerMenu.ALL_MEMBER, CoreConstants.TABLE_NAME.FAMILY_MEMBER);
+        if(HnppConstants.isPkLogin()){
+            tableMap.put(CoreConstants.DrawerMenu.CHILD_0_6,CoreConstants.DrawerMenu.CHILD_0_6);
+            tableMap.put(CoreConstants.DrawerMenu.CHILD_7_24,CoreConstants.DrawerMenu.CHILD_7_24);
+            tableMap.put(CoreConstants.DrawerMenu.CHILD_25_60,CoreConstants.DrawerMenu.CHILD_25_60);
+        }
     }
 
     @Override

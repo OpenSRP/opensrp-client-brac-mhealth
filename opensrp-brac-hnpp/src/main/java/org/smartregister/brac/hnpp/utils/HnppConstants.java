@@ -176,6 +176,13 @@ public class HnppConstants extends CoreConstants {
         }
         return number_to_return;
     }
+    public static boolean isPkLogin(){
+        String role = org.smartregister.Context.getInstance().allSharedPreferences().fetchRegisteredRole();
+        if(TextUtils.isEmpty(role)) return false;
+        if(role.equalsIgnoreCase("PK")) return true;
+        return false;
+
+    }
 
     public static boolean isReleaseBuild() {
         if(BuildConfig.IS_TRAINING){

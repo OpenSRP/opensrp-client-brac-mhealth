@@ -1,5 +1,7 @@
 package org.smartregister.chw.core.model;
 
+import java.util.ArrayList;
+
 public class NavigationOption {
 
     private int ResourceID;
@@ -9,7 +11,7 @@ public class NavigationOption {
     private long RegisterCount;
     private boolean expanded;
     private boolean isNeedToExpand = false;
-    private NavigationSubModel navigationSubModel;
+    private ArrayList<NavigationSubModel> navigationSubModel = new ArrayList<>();
 
     public NavigationOption(int resourceID, int resourceActiveID, int titleID, String menuTitle, long registerCount) {
         ResourceID = resourceID;
@@ -18,12 +20,15 @@ public class NavigationOption {
         MenuTitle = menuTitle;
         RegisterCount = registerCount;
     }
-
     public void setNavigationSubModel(NavigationSubModel navigationSubModel) {
+        this.navigationSubModel.add(navigationSubModel);
+    }
+
+    public void setNavigationSubModel(ArrayList<NavigationSubModel> navigationSubModel) {
         this.navigationSubModel = navigationSubModel;
     }
 
-    public NavigationSubModel getNavigationSubModel() {
+    public ArrayList<NavigationSubModel> getNavigationSubModel() {
         return navigationSubModel;
     }
 

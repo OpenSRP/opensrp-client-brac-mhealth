@@ -131,6 +131,18 @@
             android:screenOrientation="portrait"
             android:theme="@style/HNPPTheme.NoActionBar" />
         <activity
+            android:name="org.smartregister.brac.hnpp.activity.HnppChildZeroSixRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HNPPTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.brac.hnpp.activity.HnppChildSevenTwentyFourRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HNPPTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.brac.hnpp.activity.HnppChildTwentyFiveSixtyRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HNPPTheme.NoActionBar" />
+        <activity
             android:name="org.smartregister.brac.hnpp.activity.HnppPncRiskRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HNPPTheme.NoActionBar" />

@@ -53,39 +53,16 @@
     </RelativeLayout>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/sub_item_panel"
         android:background="@color/white"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="60dp"
-        android:visibility="gone"
         android:padding="5dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/stvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentLeft="true"
-            android:layout_toRightOf="@+id/stvCount"
-            android:fontFamily="sans-serif"
-            android:text="@string/all_registers"
-            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/stvCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:fontFamily="sans-serif"
-            android:text="0"
-            android:textSize="20sp" />
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

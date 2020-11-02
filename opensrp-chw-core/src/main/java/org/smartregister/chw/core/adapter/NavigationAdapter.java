@@ -9,12 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.smartregister.chw.core.R;
 import org.smartregister.chw.core.listener.NavigationListener;
+import org.smartregister.chw.core.listener.NavigationSubMenu;
 import org.smartregister.chw.core.model.NavigationOption;
+import org.smartregister.chw.core.model.NavigationSubModel;
 import org.smartregister.chw.core.utils.CoreConstants;
 
 import java.util.List;
@@ -86,8 +89,22 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.My
         }
         if(model.isNeedToExpand()){
             holder.expandIcon.setVisibility(View.VISIBLE);
-            holder.sTvName.setText(model.getNavigationSubModel().getSubTitle());
-            holder.sTvCount.setText(model.getNavigationSubModel().getSubCount()+"");
+            holder.subLayout.removeAllViews();
+            for(int i = 0; i < model.getNavigationSubModel().size() ; i++){
+                View sub = LayoutInflater.from(context).inflate(R.layout.navigation_submenu, null);
+                TextView sTvName = sub.findViewById(R.id.stvName);
+                TextView sTvCount = sub.findViewById(R.id.stvCount);
+                holder.subLayout.addView(sub);
+                NavigationSubModel subModel = model.getNavigationSubModel().get(i);
+                sTvName.setText(subModel.getSubTitle());
+                sTvCount.setText(subModel.getSubCount()+"");
+                sub.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onClickListener.onClickSubMenu(subModel.getType());
+                    }
+                });
+            }
             boolean expanded = model.isExpanded();
 
             holder.subLayout.setVisibility(expanded ? View.VISIBLE : View.GONE);
@@ -101,12 +118,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.My
 
                 }
             });
-            holder.subLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onClickListener.onClickSubMenu(model.getNavigationSubModel().getType());
-                }
-            });
+
 
         }else{
             holder.expandIcon.setVisibility(View.INVISIBLE);
@@ -126,8 +138,8 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.My
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvName, tvCount,sTvName, sTvCount;
-        public RelativeLayout subLayout;
+        public TextView tvName, tvCount;
+        public LinearLayout subLayout;
         public ImageView ivIcon,expandIcon;
 
         private View myView;
@@ -139,8 +151,6 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.My
             tvCount = view.findViewById(R.id.tvCount);
             ivIcon = view.findViewById(R.id.ivIcon);
             expandIcon = view.findViewById(R.id.expandBtn);
-            sTvName = view.findViewById(R.id.stvName);
-            sTvCount = view.findViewById(R.id.stvCount);
             myView = view;
             if (onClickListener != null) {
                 myView.setOnClickListener(onClickListener);

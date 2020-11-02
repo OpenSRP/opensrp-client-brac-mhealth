@@ -72,11 +72,22 @@ public class NavigationInteractor implements NavigationContract.Interactor {
             }
             tableName = "ec_family_member";
         }
-        else if (tableName.equalsIgnoreCase(CoreConstants.TABLE_NAME.CHILD) ||  tableName.equalsIgnoreCase("child_risk")) {
+        else if (tableName.equalsIgnoreCase(CoreConstants.TABLE_NAME.CHILD) ||  tableName.equalsIgnoreCase("child_risk")
+                || tableName.equalsIgnoreCase(CoreConstants.DrawerMenu.CHILD_0_6) || tableName.equalsIgnoreCase(CoreConstants.DrawerMenu.CHILD_7_24)  || tableName.equalsIgnoreCase(CoreConstants.DrawerMenu.CHILD_25_60) ) {
             if(tableName.equalsIgnoreCase("child_risk")){
                 mainCondition = String.format(" where %s is null AND %s", DBConstants.KEY.DATE_REMOVED, ChildDBConstants.riskChildAgeLimitFilter());
 
-            }else{
+            }else if(tableName.equalsIgnoreCase(CoreConstants.DrawerMenu.CHILD_0_6)){
+                mainCondition = String.format(" where %s is null AND %s", DBConstants.KEY.DATE_REMOVED, ChildDBConstants.childAgeLimitMonthFilter(DBConstants.KEY.DOB,0,6));
+
+            }else if(tableName.equalsIgnoreCase(CoreConstants.DrawerMenu.CHILD_7_24)){
+                mainCondition = String.format(" where %s is null AND %s", DBConstants.KEY.DATE_REMOVED, ChildDBConstants.childAgeLimitMonthFilter(DBConstants.KEY.DOB,7,24));
+
+            }else if(tableName.equalsIgnoreCase(CoreConstants.DrawerMenu.CHILD_25_60)){
+                mainCondition = String.format(" where %s is null AND %s", DBConstants.KEY.DATE_REMOVED, ChildDBConstants.childAgeLimitMonthFilter(DBConstants.KEY.DOB,25,60));
+
+            }
+            else{
                 mainCondition = String.format(" where %s is null AND %s", DBConstants.KEY.DATE_REMOVED, ChildDBConstants.childAgeLimitFilter());
             }
             tableName = CoreConstants.TABLE_NAME.CHILD;
