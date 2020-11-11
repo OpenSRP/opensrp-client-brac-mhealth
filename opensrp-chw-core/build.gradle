@@ -10,7 +10,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:4.1.0'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
     }
 }
@@ -149,6 +149,7 @@ dependencies {
     api 'org.greenrobot:eventbus:3.1.1'
     api "org.smartregister:android-p2p-sync:0.3.2-SNAPSHOT"
 
+    //noinspection OutdatedLibrary
     api('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
         transitive = true
     }
@@ -190,9 +191,9 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
     def debugTree = fileTree(dir: "$project.buildDir/intermediates/classes/debug", excludes: fileFilter)
     def mainSrc = "$project.projectDir/src/main/java"
 
-    sourceDirectories = files([mainSrc])
-    classDirectories = files([debugTree])
-    executionData = fileTree(dir: project.buildDir, includes: [
+    sourceDirectories.from = files([mainSrc])
+    classDirectories.from = files([debugTree])
+    executionData.from = fileTree(dir: project.buildDir, includes: [
             'jacoco/testDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec'
     ])
 }

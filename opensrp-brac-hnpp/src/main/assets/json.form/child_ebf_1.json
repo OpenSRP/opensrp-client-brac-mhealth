@@ -1,0 +1,186 @@
+{
+  "count": "1",
+  "encounter_type": "Child EBF1",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "EBF 1",
+    "fields": [
+
+      {
+        "key": "form_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "Child EBF1",
+        "openmrs_data_type": "text",
+        "type": "hidden",
+        "value": "child_ebf_1"
+      },
+      {
+        "key": "baby_on_mother_chest",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "baby_on_mother_chest",
+        "openmrs_data_type": "text",
+        "type": "spinner",
+        "hint": "জন্মের এক ঘন্টার মধ্যে বাচ্চাকে মায়ের বুকে লাগানো হয়েছে?",
+        "values": [
+          "হ্যাঁ",
+          "না"
+        ],
+        "openmrs_choice_ids": {
+          "হ্যাঁ": "Yes",
+          "না": "No"
+        }
+      },
+      {
+        "key": "baby_has_been_counseled",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "baby_has_been_counseled",
+        "openmrs_data_type": "text",
+        "type": "spinner",
+        "hint": "বাচ্চার সেবাদানকারী কি যথাযথ পরামর্শ ও নির্দেশনা পেয়েছে?",
+        "values": [
+          "হ্যাঁ",
+          "না"
+        ],
+        "openmrs_choice_ids": {
+          "হ্যাঁ": "Yes",
+          "না": "No"
+        }
+      },
+      {
+        "key": "baby_exclusively_breast_fed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "baby_exclusively_breast_fed",
+        "openmrs_data_type": "text",
+        "type": "spinner",
+        "hint": "গত ২৪ ঘন্টায় বাচ্চাটি  মায়ের বুকের দুধ খেয়েছে কি?",
+        "values": [
+          "হ্যাঁ",
+          "না"
+        ],
+        "openmrs_choice_ids": {
+          "হ্যাঁ": "Yes",
+          "না": "No"
+        }
+      },
+      {
+        "key": "breast_feeding_complication",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "breast_feeding_complication",
+        "openmrs_data_type": "text",
+        "type": "spinner",
+        "hint": "বুকের দুধ খাওয়ানোর ক্ষেত্রে কোন সমস্যা আছে কি?",
+        "values": [
+          "হ্যাঁ",
+          "না"
+        ],
+        "openmrs_choice_ids": {
+          "হ্যাঁ": "Yes",
+          "না": "No"
+        }
+      },
+      {
+        "key": "type_of_breastfeeding_complication",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_breastfeeding_complication",
+        "type": "check_box",
+        "label": "নবুকের দুধ খাওয়ানোর ক্ষেত্রে কি ধরণের সমস্যা রয়েছে?",
+        "exclusive": [
+          "noIdentifier"
+        ],
+        "options": [
+          {
+            "key": "Not_enough_milk ",
+            "text": "যথেষ্ট দুধ নেই",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "Not_enough_milk"
+          },
+          {
+            "key": "Poor_attachment",
+            "text": "দুর্বল ভাবে লাগা",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "Poor_attachment"
+          },
+          {
+            "key": "Breast_engorgement",
+            "text": "অধিক দুধে স্তন ফুলে ওঠা",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "Breast_engorgement"
+          },
+          {
+            "key": "Cracked_nipple",
+            "text": "ভাঙা নিপল",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "Cracked_nipple"
+          },
+          {
+            "key": "Inverted_nipple",
+            "text": "উল্টানো নিপল",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "Inverted_nipple"
+          }
+        ],
+        "relevance": {
+          "step1:breast_feeding_complication": {
+            "type": "string",
+            "ex": "equalTo(., \"হ্যাঁ\")"
+          }
+        }
+      }
+    ]
+  }
+}
